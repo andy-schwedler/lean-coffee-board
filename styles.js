@@ -7,12 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  #__next{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
+ 
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,

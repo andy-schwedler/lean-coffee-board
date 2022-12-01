@@ -1,21 +1,18 @@
 import styled from "styled-components";
 
-export default function Cards() {
+export default function Cards({ card }) {
   return (
     <StyledCard>
-      <li>Text</li>
+      <p>Text</p>
       <p>Author</p>
     </StyledCard>
   );
 }
 
-const StyledCard = styled.ul`
-  list-style-type: none;
-  border: darkgray;
+const StyledCard = styled.section`
+  text-align: center;
+  font-style: italic;
 
-  li {
-    font-style: italic;
-  }
   p {
     font-family: monospace;
     color: orangered;
