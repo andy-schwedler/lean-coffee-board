@@ -1,8 +1,8 @@
 import { useState } from "react";
-import styled from "styled-components";
 import Card from "../components/Card/Card";
 import Form from "../components/Form/Form";
 import { nanoid } from "nanoid";
+import { StyledBoard, StyledHeader } from "../styles";
 
 export default function HomePage() {
   const [cards, setCards] = useState([]);
@@ -10,6 +10,7 @@ export default function HomePage() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const thought = event.target.elements.thoughts.value;
     const owner = event.target.elements.owner.value;
     setCards([...cards, { thought: thought, owner: owner, id: nanoid() }]);
@@ -18,7 +19,7 @@ export default function HomePage() {
   }
 
   function handleDelete(id) {
-    setCards(cards.filter((card) => setCards(card.id !== card.id)));
+    setCards(cards.filter((card) => setCards(id !== card.id)));
     console.log(cards);
   }
 
@@ -43,15 +44,3 @@ export default function HomePage() {
     </>
   );
 }
-
-const StyledHeader = styled.h1`
-  font-family: monospace;
-  text-align: center;
-  text-size-adjust: 124px;
-`;
-
-const StyledBoard = styled.ul`
-  display: flex;
-  justify-content: row;
-  gap: 10px;
-`;

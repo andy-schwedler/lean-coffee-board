@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { StyledForm } from "./StyledForm";
 
 export default function Form({ onSubmit }) {
   return (
@@ -11,27 +11,3 @@ export default function Form({ onSubmit }) {
     </>
   );
 }
-
-const StyledForm = styled.form`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  position: fixed;
-  bottom: 0px;
-  gap: 20px;
-
-  input {
-    align-items: center;
-    border: 1px solid darkgray;
-    height: 30px;
-    margin: 10px;
-  }
-  button {
-    padding: 10px;
-    border: none;
-    width: auto;
-    color: orangered;
-    height: 30px;
-    /* height: 35px; */
-  }
-`;
