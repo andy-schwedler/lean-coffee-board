@@ -18,7 +18,8 @@ export default function HomePage() {
   }
 
   function handleDelete(id) {
-    setCards(cards.filter((card) => setCards(id !== id)));
+    setCards(cards.filter((card) => setCards(card.id !== card.id)));
+    console.log(cards);
   }
 
   return (
