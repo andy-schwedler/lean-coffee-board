@@ -12,9 +12,13 @@ export default function HomePage() {
     event.preventDefault();
     const thought = event.target.elements.thoughts.value;
     const owner = event.target.elements.owner.value;
-    event.target.reset();
-
     setCards([...cards, { thought: thought, owner: owner, id: nanoid() }]);
+
+    event.target.reset();
+  }
+
+  function handleDelete(id) {
+    setCards(cards.filter((card) => setCards(id !== id)));
   }
 
   return (
@@ -24,7 +28,12 @@ export default function HomePage() {
       <StyledBoard>
         {cards.map((card) => {
           return (
-            <Card key={card.id} owner={card.owner} thought={card.thought} />
+            <Card
+              key={card.id}
+              owner={card.owner}
+              thought={card.thought}
+              onDelete={handleDelete}
+            />
           );
         })}
       </StyledBoard>
