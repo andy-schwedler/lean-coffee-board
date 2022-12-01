@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export default function Card({ owner, thought }) {
+export default function Card({ owner, thought, onDelete, id }) {
   return (
     <StyledCard>
       <p>{thought}</p>
       <hr></hr>
       <p>{owner}</p>
+      <button onClick={() => onDelete(id)}>🙅🏽‍♂️</button>
     </StyledCard>
   );
 }
@@ -21,8 +22,13 @@ const StyledCard = styled.li`
 
   p {
     font-family: monospace;
+    width: auto;
   }
   hr {
     border: 1px dotted;
+  }
+  button {
+    border: none;
+    background-color: white;
   }
 `;
