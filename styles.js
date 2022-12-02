@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 #__next{
   height: 100vh;
+  width: 100vw;
+  overflow: auto;
 }
  
   body {

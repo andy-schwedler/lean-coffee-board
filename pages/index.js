@@ -30,7 +30,7 @@ export default function HomePage() {
       })
     );
   }
-
+  // get task from here https://lean-coffee-board-api-nextjs.vercel.app/
   async function getCards() {
     const response = await fetch(
       "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
@@ -73,4 +73,6 @@ const StyledB = styled.div`
   flex-direction: row;
   width: 50vw;
   box-sizing: content-box;
+  width: 100%;
+  overflow: auto;
 `;
