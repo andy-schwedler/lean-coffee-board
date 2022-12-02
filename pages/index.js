@@ -31,22 +31,22 @@ export default function HomePage() {
     );
   }
   // get task from here https://lean-coffee-board-api-nextjs.vercel.app/
-  async function getCards() {
-    const response = await fetch(
-      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
-    );
-    const cardsList = await response.json();
-    setCards(cardsList); // update of a state variable (or thoughts, notes, cards, etc.)
-  }
-  useEffect(() => {
-    getCards();
-  }, []);
+  // async function getCards() {
+  //   const response = await fetch(
+  //     "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
+  //   );
+  //   const cardsList = await response.json();
+  //   setCards(cardsList); // update of a state variable (or thoughts, notes, cards, etc.)
+  // }
+  // useEffect(() => {
+  //   getCards();
+  // }, []);
 
   return (
     <>
       <StyledHeader>Lean Coffee Board</StyledHeader>
       <hr></hr>
-      <StyledB>
+      <StyledScrollContainer>
         <StyledBoard>
           {cards.map((card) => {
             return (
@@ -61,14 +61,14 @@ export default function HomePage() {
             );
           })}
         </StyledBoard>
-      </StyledB>
+      </StyledScrollContainer>
       <hr></hr>
       <Form onSubmit={handleSubmit} />
     </>
   );
 }
 
-const StyledB = styled.div`
+const StyledScrollContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 50vw;
