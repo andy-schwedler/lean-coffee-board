@@ -1,19 +1,13 @@
-export default function EditForm({ thought }) {
+export default function EditForm({ onChange, id, toggleEdit }) {
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(event.target.elements.input.value);
+    onChange(id, event.target.elements.input.value);
+  }
   return (
-    <form>
-      <input value={thought}></input>
+    <form onSubmit={handleSubmit}>
+      <input name="input"></input>
       <button>add</button>
     </form>
   );
 }
-
-// for Edit-sbumit-button
-
-// const handleChange = (id, thoughts) => {
-//   setCards(
-//     cards.map((card) => {
-//       if (card.id === id) return { ...card, thoughts };
-//       return card;
-//     })
-//   );
-// };

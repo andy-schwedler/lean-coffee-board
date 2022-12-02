@@ -22,6 +22,15 @@ export default function HomePage() {
     console.log("this ID was deleted from the index.js", id);
   }
 
+  function handleChange(id, para) {
+    setCards(
+      cards.map((card) => {
+        if (card.id === id) return { ...card, thought: para };
+        return card;
+      })
+    );
+  }
+
   return (
     <>
       <StyledHeader>Lean Coffee Board</StyledHeader>
@@ -34,6 +43,8 @@ export default function HomePage() {
               owner={card.owner}
               thought={card.thought}
               onDelete={() => handleDelete(card.id)}
+              onChange={handleChange}
+              id={card.id}
             />
           );
         })}
@@ -43,3 +54,14 @@ export default function HomePage() {
     </>
   );
 }
+
+// for Edit-sbumit-button
+
+// const handleChange = (id, thoughts) => {
+//   setCards(
+//     cards.map((card) => {
+//       if (card.id === id) return { ...card, thoughts };
+//       return card;
+//     })
+//   );
+// };
