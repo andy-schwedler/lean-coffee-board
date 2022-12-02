@@ -1,4 +1,5 @@
 import { useState } from "react";
+import EditForm from "../EditForm/EditForm";
 
 import { StyledCard } from "./StyledCard";
 
@@ -17,7 +18,7 @@ export default function Card({ owner, thought, onDelete, id }) {
         <button onClick={() => onDelete(id)}>🗑</button>
         <button onClick={toggleEdit}>📝</button>
       </div>
-      {isEditing ? <input defaultValue={thought} /> : null}
+      {isEditing ? <EditForm thought={thought} /> : null}
     </StyledCard>
   );
 }

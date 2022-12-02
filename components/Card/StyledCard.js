@@ -11,6 +11,7 @@ export const StyledCard = styled.li`
   border: 1px solid black;
   margin-top: 10px;
   margin-right: 50px;
+  padding: 10px 10px 10px 10px;
   width: 150px;
   box-shadow: 2px 0px 32px 10px rgba(173, 170, 173, 1);
   border-radius: 5px;

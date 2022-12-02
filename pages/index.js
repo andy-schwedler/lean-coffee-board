@@ -17,20 +17,9 @@ export default function HomePage() {
     event.target.reset();
   }
 
-  // for Edit-sbumit-button
-
-  // const handleChange = (id, thoughts) => {
-  //   setCards(
-  //     cards.map((card) => {
-  //       if (card.id === id) return { ...card, thoughts };
-  //       return card;
-  //     })
-  //   );
-  // };
-
   function handleDelete(id) {
     setCards(cards.filter((card) => id !== card.id));
-    console.log(id);
+    console.log("this ID was deleted from the index.js", id);
   }
 
   return (

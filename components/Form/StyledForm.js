@@ -15,12 +15,25 @@ export const StyledForm = styled.form`
     margin: 10px;
     height: 5vh;
     width: 40vw;
+    background-color: whitesmoke;
+    border-color: white;
+    border-radius: 5px;
   }
+
+  input:placeholder-shown {
+    font-style: italic;
+    text-align: center;
+    font-family: monospace;
+  }
+
   button {
     padding: 10px;
+    font-family: monospace;
     border: none;
     color: orangered;
     width: 150px;
     height: 45px;
+    font-size: large;
+    border-radius: 5px;
   }
 `;
