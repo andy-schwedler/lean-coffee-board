@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import Form from "../components/Form/Form";
 import { nanoid } from "nanoid";
 import { StyledBoard, StyledHeader } from "../styles";
+import styled from "styled-components";
 
 export default function HomePage() {
   const [cards, setCards] = useState([]);
@@ -19,7 +20,6 @@ export default function HomePage() {
 
   function handleDelete(id) {
     setCards(cards.filter((card) => id !== card.id));
-    console.log("this ID was deleted from the index.js", id);
   }
 
   function handleChange(id, para) {
@@ -31,37 +31,46 @@ export default function HomePage() {
     );
   }
 
+  async function getCards() {
+    const response = await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
+    );
+    const cardsList = await response.json();
+    setCards(cardsList); // update of a state variable (or thoughts, notes, cards, etc.)
+  }
+  useEffect(() => {
+    getCards();
+  }, []);
+
   return (
     <>
       <StyledHeader>Lean Coffee Board</StyledHeader>
       <hr></hr>
-      <StyledBoard>
-        {cards.map((card) => {
-          return (
-            <Card
-              key={card.id}
-              owner={card.owner}
-              thought={card.thought}
-              onDelete={() => handleDelete(card.id)}
-              onChange={handleChange}
-              id={card.id}
-            />
-          );
-        })}
-      </StyledBoard>
+      <StyledB>
+        <StyledBoard>
+          {cards.map((card) => {
+            return (
+              <Card
+                key={card.id}
+                owner={card.owner}
+                thought={card.thought}
+                onDelete={() => handleDelete(card.id)}
+                onChange={handleChange}
+                id={card.id}
+              />
+            );
+          })}
+        </StyledBoard>
+      </StyledB>
       <hr></hr>
       <Form onSubmit={handleSubmit} />
     </>
   );
 }
 
-// for Edit-sbumit-button
-
-// const handleChange = (id, thoughts) => {
-//   setCards(
-//     cards.map((card) => {
-//       if (card.id === id) return { ...card, thoughts };
-//       return card;
-//     })
-//   );
-// };
+const StyledB = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  box-sizing: content-box;
+`;

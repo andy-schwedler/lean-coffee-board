@@ -9,7 +9,7 @@ export default function EditForm({ thought, onChange, id, onToggle }) {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <input name="input" defaultValue={thought}></input>
+      <StyledInput name="input" defaultValue={thought}></StyledInput>
       <button>add</button>
     </form>
   );

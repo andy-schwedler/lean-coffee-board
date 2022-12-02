@@ -28,6 +28,6 @@ export const StyledBoard = styled.ul`
   display: flex;
   justify-content: row;
   gap: 10px;
-  height: 50vh;
   padding-left: 5px;
+  height: 40vh;
 `;
