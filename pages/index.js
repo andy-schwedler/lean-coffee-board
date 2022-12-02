@@ -1,24 +1,34 @@
 import { useState } from "react";
-import styled from "styled-components";
 import Card from "../components/Card/Card";
 import Form from "../components/Form/Form";
 import { nanoid } from "nanoid";
+import { StyledBoard, StyledHeader } from "../styles";
 
 export default function HomePage() {
   const [cards, setCards] = useState([]);
-  console.log(cards);
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const thought = event.target.elements.thoughts.value;
     const owner = event.target.elements.owner.value;
-    setCards([...cards, { thought: thought, owner: owner, id: nanoid() }]);
 
+    setCards([...cards, { thought: thought, owner: owner, id: nanoid() }]);
     event.target.reset();
   }
 
   function handleDelete(id) {
-    setCards(cards.filter((card) => setCards(id !== id)));
+    setCards(cards.filter((card) => id !== card.id));
+    console.log("this ID was deleted from the index.js", id);
+  }
+
+  function handleChange(id, para) {
+    setCards(
+      cards.map((card) => {
+        if (card.id === id) return { ...card, thought: para };
+        return card;
+      })
+    );
   }
 
   return (
@@ -32,7 +42,9 @@ export default function HomePage() {
               key={card.id}
               owner={card.owner}
               thought={card.thought}
-              onDelete={handleDelete}
+              onDelete={() => handleDelete(card.id)}
+              onChange={handleChange}
+              id={card.id}
             />
           );
         })}
@@ -43,14 +55,13 @@ export default function HomePage() {
   );
 }
 
-const StyledHeader = styled.h1`
-  font-family: monospace;
-  text-align: center;
-  text-size-adjust: 124px;
-`;
+// for Edit-sbumit-button
 
-const StyledBoard = styled.ul`
-  display: flex;
-  justify-content: row;
-  gap: 10px;
-`;
+// const handleChange = (id, thoughts) => {
+//   setCards(
+//     cards.map((card) => {
+//       if (card.id === id) return { ...card, thoughts };
+//       return card;
+//     })
+//   );
+// };
