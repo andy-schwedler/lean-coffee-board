@@ -6,21 +6,31 @@ import { StyledBoard, StyledHeader } from "../styles";
 
 export default function HomePage() {
   const [cards, setCards] = useState([]);
-  console.log(cards);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     const thought = event.target.elements.thoughts.value;
     const owner = event.target.elements.owner.value;
-    setCards([...cards, { thought: thought, owner: owner, id: nanoid() }]);
 
+    setCards([...cards, { thought: thought, owner: owner, id: nanoid() }]);
     event.target.reset();
   }
 
+  // for Edit-sbumit-button
+
+  // const handleChange = (id, thoughts) => {
+  //   setCards(
+  //     cards.map((card) => {
+  //       if (card.id === id) return { ...card, thoughts };
+  //       return card;
+  //     })
+  //   );
+  // };
+
   function handleDelete(id) {
-    setCards(cards.filter((card) => setCards(id !== card.id)));
-    console.log(cards);
+    setCards(cards.filter((card) => id !== card.id));
+    console.log(id);
   }
 
   return (
@@ -34,7 +44,7 @@ export default function HomePage() {
               key={card.id}
               owner={card.owner}
               thought={card.thought}
-              onDelete={handleDelete}
+              onDelete={() => handleDelete(card.id)}
             />
           );
         })}
