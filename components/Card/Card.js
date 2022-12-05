@@ -14,7 +14,7 @@ export default function Card({ owner, thought, onDelete, id, onChange }) {
       <p>{thought}</p>
       <p>{owner}</p>
       <div>
-        <button onClick={() => onDelete(id)}>🗑</button>
+        <button onClick={onDelete}>🗑</button>
         <button onClick={toggleEdit}>📝</button>
       </div>
       {isEditing ? (
@@ -28,7 +28,3 @@ export default function Card({ owner, thought, onDelete, id, onChange }) {
     </StyledCard>
   );
 }
-
-/*
-<input value={thought}
-*/

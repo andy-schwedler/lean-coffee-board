@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 #__next{
   height: 100vh;
+  width: 100vw;
+  overflow: auto;
 }
  
   body {
@@ -26,8 +28,7 @@ export const StyledHeader = styled.h1`
 
 export const StyledBoard = styled.ul`
   display: flex;
-  justify-content: row;
   gap: 10px;
-  height: 50vh;
   padding-left: 5px;
+  height: auto;
 `;

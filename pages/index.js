@@ -1,25 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import Form from "../components/Form/Form";
-import { nanoid } from "nanoid";
 import { StyledBoard, StyledHeader } from "../styles";
+import styled from "styled-components";
 
 export default function HomePage() {
   const [cards, setCards] = useState([]);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const thought = event.target.elements.thoughts.value;
     const owner = event.target.elements.owner.value;
 
-    setCards([...cards, { thought: thought, owner: owner, id: nanoid() }]);
-    event.target.reset();
-  }
+    await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ text: thought, name: owner }),
+      }
+    );
 
-  function handleDelete(id) {
-    setCards(cards.filter((card) => id !== card.id));
-    console.log("this ID was deleted from the index.js", id);
+    getCards();
+
+    event.target.reset();
   }
 
   function handleChange(id, para) {
@@ -30,38 +37,67 @@ export default function HomePage() {
       })
     );
   }
+  // get task from here https://lean-coffee-board-api-nextjs.vercel.app/
+  async function getCards() {
+    const response = await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
+    );
+    const cardsList = await response.json();
+    const translatedCards = cardsList.map((card) => {
+      return {
+        id: card.id,
+        thought: card.text,
+        owner: card.name,
+      };
+    });
+    setCards(translatedCards); // update of a state variable (or thoughts, notes, cards, etc.)
+  }
+  useEffect(() => {
+    getCards();
+  }, []);
+
+  async function handleDeleteQuestion(id) {
+    await fetch(
+      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions/" + id,
+      {
+        method: "DELETE",
+      }
+    );
+    getCards();
+  }
 
   return (
     <>
       <StyledHeader>Lean Coffee Board</StyledHeader>
       <hr></hr>
-      <StyledBoard>
-        {cards.map((card) => {
-          return (
-            <Card
-              key={card.id}
-              owner={card.owner}
-              thought={card.thought}
-              onDelete={() => handleDelete(card.id)}
-              onChange={handleChange}
-              id={card.id}
-            />
-          );
-        })}
-      </StyledBoard>
+      <StyledScrollContainer>
+        <StyledBoard>
+          {cards.map((card) => {
+            return (
+              <Card
+                key={card.id}
+                owner={card.owner}
+                thought={card.thought}
+                onDelete={() => handleDeleteQuestion(card.id)}
+                onChange={handleChange}
+                id={card.id}
+              />
+            );
+          })}
+        </StyledBoard>
+      </StyledScrollContainer>
       <hr></hr>
       <Form onSubmit={handleSubmit} />
     </>
   );
 }
 
-// for Edit-sbumit-button
-
-// const handleChange = (id, thoughts) => {
-//   setCards(
-//     cards.map((card) => {
-//       if (card.id === id) return { ...card, thoughts };
-//       return card;
-//     })
-//   );
-// };
+const StyledScrollContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  height: 70vh;
+  box-sizing: content-box;
+  width: 100%;
+  overflow: auto;
+`;
