@@ -12,7 +12,7 @@ export const StyledCard = styled.li`
   margin-top: 10px;
   margin-right: 50px;
   padding: 10px 10px 10px 10px;
-  width: 150px;
+  width: 40vw;
   box-shadow: 2px 0px 32px 10px rgba(173, 170, 173, 1);
   border-radius: 5px;
 
@@ -30,6 +30,6 @@ export const StyledCard = styled.li`
   button {
     border: none;
     background-color: white;
-    width: auto;
+    width: 50%;
   }
 `;

@@ -28,8 +28,7 @@ export const StyledHeader = styled.h1`
 
 export const StyledBoard = styled.ul`
   display: flex;
-  justify-content: row;
   gap: 10px;
   padding-left: 5px;
-  height: 40vh;
+  height: auto;
 `;

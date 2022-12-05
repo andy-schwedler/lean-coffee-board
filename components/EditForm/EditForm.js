@@ -9,8 +9,8 @@ export default function EditForm({ thought, onChange, id, onToggle }) {
   }
   return (
     <form onSubmit={handleSubmit}>
-      <StyledInput name="input" defaultValue={thought}></StyledInput>
-      <button>add</button>
+      <StyledInput name="input" defaultValue={thought} required></StyledInput>
+      <button>✅</button>
     </form>
   );
 }

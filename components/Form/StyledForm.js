@@ -5,7 +5,7 @@ export const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 100vw;
+  width: 80vw;
   height: 10vh;
   bottom: 0px;
 
@@ -14,7 +14,7 @@ export const StyledForm = styled.form`
     border: 1px solid darkgray;
     margin: 10px;
     height: 5vh;
-    width: 40vw;
+    width: 50vw;
     background-color: whitesmoke;
     border-color: white;
     border-radius: 5px;
@@ -31,8 +31,6 @@ export const StyledForm = styled.form`
     font-family: monospace;
     border: none;
     color: orangered;
-    width: 150px;
-    height: 45px;
     font-size: large;
     border-radius: 5px;
   }
