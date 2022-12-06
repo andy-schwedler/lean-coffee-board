@@ -15,20 +15,28 @@ export const GlobalStyle = createGlobalStyle`
  
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    height: 100vh;
   }
 `;
 
 export const StyledHeader = styled.h1`
   font-family: monospace;
   text-align: center;
-  text-size-adjust: 124px;
+  text-size-adjust: 210px;
 `;
 
 export const StyledBoard = styled.ul`
   display: flex;
-  gap: 10px;
-  padding-left: 5px;
-  height: auto;
+  flex-direction: column;
+  gap: 50px;
+  height: 80vh;
+`;
+
+export const StyledScrollContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 82vh;
+  box-sizing: content-box;
+  width: 100%;
+  overflow: scroll;
 `;

@@ -5,9 +5,7 @@ export const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  width: 80vw;
-  height: 10vh;
-  bottom: 0px;
+  margin-right: 0px;
 
   input {
     align-items: center;
@@ -24,13 +22,15 @@ export const StyledForm = styled.form`
     font-style: italic;
     text-align: center;
     font-family: monospace;
+    text-transform: capitalize;
   }
 
   button {
     padding: 10px;
     font-family: monospace;
     border: none;
-    color: orangered;
+    color: white;
+    background-color: orangered;
     font-size: large;
     border-radius: 5px;
   }

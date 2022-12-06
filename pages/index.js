@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card/Card";
 import Form from "../components/Form/Form";
-import { StyledBoard, StyledHeader } from "../styles";
+import { StyledBoard, StyledHeader, StyledScrollContainer } from "../styles";
 import styled from "styled-components";
 
 export default function HomePage() {
@@ -69,7 +69,6 @@ export default function HomePage() {
   return (
     <>
       <StyledHeader>Lean Coffee Board</StyledHeader>
-      <hr></hr>
       <StyledScrollContainer>
         <StyledBoard>
           {cards.map((card) => {
@@ -86,18 +85,7 @@ export default function HomePage() {
           })}
         </StyledBoard>
       </StyledScrollContainer>
-      <hr></hr>
       <Form onSubmit={handleSubmit} />
     </>
   );
 }
-
-const StyledScrollContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 50vw;
-  height: 70vh;
-  box-sizing: content-box;
-  width: 100%;
-  overflow: auto;
-`;

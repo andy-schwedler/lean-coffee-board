@@ -11,7 +11,9 @@ export default function Card({ owner, thought, onDelete, id, onChange }) {
 
   return (
     <StyledCard>
-      <p>{thought}</p>
+      <div>
+        <p>{thought}</p>
+      </div>
       <p>{owner}</p>
       <div>
         <button onClick={onDelete}>🗑</button>
