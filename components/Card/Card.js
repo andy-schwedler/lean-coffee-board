@@ -17,7 +17,7 @@ export default function Card({ owner, thought, onDelete, id, onChange }) {
       <p>{owner}</p>
       <div>
         <button onClick={onDelete}>🗑</button>
-        <button onClick={toggleEdit}>📝</button>
+        <button onClick={toggleEdit}>🖊</button>
       </div>
       {isEditing ? (
         <EditForm

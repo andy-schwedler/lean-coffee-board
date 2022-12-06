@@ -37,6 +37,5 @@ export const StyledCard = styled.li`
   button {
     border: none;
     background-color: transparent;
-    width: 50%;
   }
 `;
