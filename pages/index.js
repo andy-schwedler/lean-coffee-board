@@ -37,11 +37,8 @@ export default function HomePage() {
       })
     );
   }
-  // get task from here https://lean-coffee-board-api-nextjs.vercel.app/
   async function getCards() {
-    const response = await fetch(
-      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions"
-    );
+    const response = await fetch("/api/questions");
     const cardsList = await response.json();
     const translatedCards = cardsList.map((card) => {
       return {
@@ -57,12 +54,9 @@ export default function HomePage() {
   }, []);
 
   async function handleDeleteQuestion(id) {
-    await fetch(
-      "https://lean-coffee-board-api-nextjs.vercel.app/api/questions/" + id,
-      {
-        method: "DELETE",
-      }
-    );
+    await fetch("/api/questions/" + id, {
+      method: "DELETE",
+    });
     getCards();
   }
 
